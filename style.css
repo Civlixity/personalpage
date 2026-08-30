@@ -77,26 +77,19 @@ body {
 
     .build-column {
         position: absolute;
+        bottom: 15%;
 
-        bottom: 20%;
+        width: 160px;
+        height: 380px;
 
-        width: 70px;
-        height: 280px;
+        background-image: url("column.png"); 
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center bottom;
 
-        border-left: 2px solid gray;
-        border-right: 2px solid gray;
-
-        background:
-            repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent 7px,
-                lightgray 8px,
-                transparent 9px
-            );
+        filter: grayscale(100%) brightness(1.15) contrast(1.1);
 
         opacity: 0;
-
         transform: translateY(200px);
     }
 
@@ -109,31 +102,6 @@ body {
     .column-three {
         left: 65%;
     }
-
-    .build-column::before,
-    .build-column::after {
-        content: "";
-
-        position: absolute;
-
-        left: -14px;
-
-        width: 94px;
-        height: 15px;
-
-        border: 2px solid gray;
-
-        background: hsl(0, 0%, 97%);
-    }
-
-    .build-column::before {
-        top: -17px;
-    }
-
-    .build-column::after {
-        bottom: -17px;
-    }
-
 
 
     .build-title {
@@ -154,28 +122,27 @@ body {
     }
 
 
+/* =========================================
+   RED CURTAIN
+   ========================================= */
 
     .build-drape {
         position: absolute;
 
         left: 0;
-        bottom: 12%;
+        bottom: 67px;
 
         width: 100%;
-        height: 80px;
+        height: 120px;
 
-        background:
-            repeating-linear-gradient(
-                90deg,
-                darkred,
-                crimson 50px,
-                rgb(70, 0, 0) 100px
-            );
+        background-image: url("velvet.png");
+        background-repeat: repeat-x;
+        background-size: auto 120px;
 
         transform: translateX(-110%);
+
+        z-index: 5;
     }
-
-
 
     @keyframes buildColumn {
         from {
@@ -231,6 +198,7 @@ body {
             transform: translateX(0);
         }
     }
+
 
     #build-screen.building .build-drape {
         animation: buildDrape 1s 2.2s ease forwards;
@@ -301,6 +269,17 @@ nav {
     align-items: center;
 
     text-decoration: none;
+
+    transition: background-color 0.2s ease, transform 0.4s ease;
+}
+
+.nav-cube:hover {
+    background-color: hsl(0, 1%, 65%);
+    transform: scale(1.05);
+}
+
+.nav-cube:hover .nav-title {
+    color: black;
 }
 
 .nav-left {
@@ -452,9 +431,8 @@ p {
 }
 
 #skills .cube:hover {
-    background-image: url(blueprint.png);
-    background-size: cover;
-    transform: scale(1.1);
+    background-color: hsl(0, 0%, 50%);
+    transform: scale(1.05);
     color: white;
 }
 
@@ -520,8 +498,8 @@ p {
 }
 
 #education .cube:hover {
-    background-color: hsl(0, 1%, 30%);
-    transform: scale(1.1);
+    background-color: hsl(0, 0%, 50%);
+    transform: scale(1.01);
     color: white;
 }
 
@@ -611,6 +589,56 @@ p {
 
 .qa-answer {
     font-size: 0.9rem;
+}
+
+/* =========================
+   1001px - 1919px
+   ========================= */
+
+
+@media (min-width: 1001px) and (max-width: 1919px) {
+
+    nav {
+        width: 200px;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    main {
+        width: calc(100% - 200px);
+
+        max-width: 1400px;
+
+        margin-left: 200px;
+        margin-right: 0;
+
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+        padding: 20px;
+    }
+
+    #about-me {
+        width: 100%;
+        max-width: 120ch;
+    }
+
+    .hero-columns {
+        width: min(70%, 1100px);
+        height: auto;
+
+        right: 0;
+        bottom: -20px;
+    }
+
+    .introduction-header {
+        font-size: clamp(3rem, 5vw, 5rem);
+    }
+
+    hr {
+        width: min(40rem, 100%);
+    }
 }
 
 /* =========================

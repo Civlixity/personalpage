@@ -11,7 +11,7 @@ window.addEventListener("scroll", () => {
 
 function animateNav() {
     if (window.innerWidth > 1000) {
-        currentY += (targetY - currentY) * 0.02;
+        currentY += (targetY - currentY) * 0.1;
         nav.style.transform = `translateY(${currentY}px)`;
     } else {
         nav.style.transform = "none";
@@ -21,9 +21,6 @@ function animateNav() {
 }
 
 animateNav();
-
-
-
 
 
 const buildScreen = document.querySelector("#build-screen");
@@ -36,7 +33,11 @@ buildButton.addEventListener("click", () => {
 
     setTimeout(() => {
         buildScreen.classList.add("finished");
-
         document.body.classList.remove("build-locked");
+
+        setTimeout(() => {
+            buildScreen.remove();
+        }, 1100); 
+
     }, 3600);
 });
